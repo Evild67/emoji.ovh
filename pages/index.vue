@@ -1,14 +1,19 @@
 <template>
-  <div class="container">
+<section class="section">
+ <div class="container">
     <div class="columns">
-      <div class="column is-3">
+      <div class="column is-3 is-hidden-touch">
         <div class="emoji--group-list">
-          <div class="control">
-            <div v-for="(group, index) in groups" :key="index">
-              <label class="radio">
-                <input type="checkbox" v-model="selectedGroups" :value="group.value"> {{group.name}}
-              </label>
-            </div>
+
+          <div class="field">
+<div v-for="(group, index) in groups" :key="index" >
+
+ <input class="is-checkradio" type="checkbox" :value="group.value"  v-model="selectedGroups"  name="group" :id="'group_'+index">
+  <label  :for="'group_'+index">{{group.name}}</label>
+
+
+</div>
+
 
           </div>
         </div>
@@ -16,7 +21,8 @@
       <div class="column">
 
         <ais-index :search-store="searchStore" :query="query" :query-parameters="{
-            hitsPerPage:1000,
+          hitsPerPage:300,
+            page:page,
             facetFilters:getfacetFilters()
            }">
 
@@ -36,7 +42,7 @@
           </no-ssr>
 
           <section class="section">
-            <ais-results class="columns is-multiline is-centered is-mobile" :results-per-page="9999">
+            <ais-results class="columns is-multiline is-centered is-mobile" :stack="true">
 
               <template slot-scope="{ result }">
                 <div class="column is-narrowed">
@@ -71,11 +77,13 @@
     </div>
 
   </div>
+</section>
+
 </template>
 
 <script>
-import Clipboard from "clipboard"
-import toastr from "toastr"
+import Clipboard from "clipboard";
+import toastr from "toastr";
 import {
   createFromAlgoliaCredentials,
   createFromSerialized,
@@ -89,8 +97,10 @@ const searchStore = createFromAlgoliaCredentials(
 export default {
   async asyncData({ context, route }) {
     searchStore.indexName = "emoji";
-    searchStore.query = route.params.query ? route.params.query : '';
+    searchStore.query = route.params.query ? route.params.query : "";
+
     searchStore.start();
+
     await searchStore.waitUntilInSync();
 
     return { serializedSearchStore: searchStore.serialize() };
@@ -98,17 +108,20 @@ export default {
 
   data() {
     return {
+      page: 1,
       searchStore: null,
       query: "",
       selectedGroups: [],
-      groups: [{ name: "Smiley & People", value: "smileys-people" },
-        { name: "Animals & Nature", value:"animals-nature"},
-        { name: "Food & Drink", value:"food-drink"},
-        { name: "Travel Places", value:"travel-places"},
-        { name: "Activities", value:"activities"},
-        { name: "Objects", value:"objects"},
-        { name: "Symbols", value:"symbols"},
-        { name: "Flags", value:"flags"}]
+      groups: [
+        { name: "Smiley & People", value: "smileys-people" },
+        { name: "Animals & Nature", value: "animals-nature" },
+        { name: "Food & Drink", value: "food-drink" },
+        { name: "Travel Places", value: "travel-places" },
+        { name: "Activities", value: "activities" },
+        { name: "Objects", value: "objects" },
+        { name: "Symbols", value: "symbols" },
+        { name: "Flags", value: "flags" }
+      ]
     };
   },
   methods: {
@@ -116,18 +129,17 @@ export default {
       return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
     },
     getfacetFilters() {
-      const facetFilter = []
-      let facetFilterGroup = []
-      this.selectedGroups.forEach((group) => {
-        facetFilterGroup.push('group:' + group)
-      })
-      facetFilter.push(facetFilterGroup)
-      return facetFilter
+      const facetFilter = [];
+      let facetFilterGroup = [];
+      this.selectedGroups.forEach(group => {
+        facetFilterGroup.push("group:" + group);
+      });
+      facetFilter.push(facetFilterGroup);
+      return facetFilter;
     }
   },
   watch: {
     "searchStore.query"(value) {
-
       if (value != "") {
         this.$router.push({
           query: { q: value }
@@ -139,23 +151,19 @@ export default {
   },
   created() {
     this.searchStore = createFromSerialized(this.serializedSearchStore);
-
   },
 
   mounted() {
-    const clipboard = new Clipboard('.emoji');
-    clipboard.on('success', function (e) {
+    const clipboard = new Clipboard(".emoji");
+    clipboard.on("success", function(e) {
       toastr.options = {
         timeOut: 1000,
         positionClass: "toast-bottom-right"
-      }
-      toastr.success('Copied')
+      };
+      toastr.success("Copied");
 
       e.clearSelection();
     });
-
-
-
   }
 };
 </script>

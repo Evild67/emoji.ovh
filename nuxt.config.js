@@ -15,7 +15,8 @@ module.exports = {
   modules: ["@nuxtjs/bulma"],
 
   plugins: ["~plugins/vue-instantsearch"],
-  css: ["~/css/main.css", "~/css/balloon.min.css", "~/css/toastr.min.css"],
+  css: ["~/css/main.css", "~/css/balloon.min.css", "~/css/toastr.min.css",
+  "~/css/bulma-checkradio.css"],
   /*
   ** Customize the progress bar color
   */
