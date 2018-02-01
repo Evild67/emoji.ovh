@@ -3,11 +3,11 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: "emoji.ovh",
+    title: "😎 Emoji.ovh - Copy & Past your Emojis",
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { hid: "description", name: "description", content: "Nuxt.js project" }
+      { hid: "description", name: "description", content: "Copy & Past your Emojis !" 😀😁😂🤣😃😄😅😆😉}
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
   },
@@ -15,8 +15,12 @@ module.exports = {
   modules: ["@nuxtjs/bulma"],
 
   plugins: ["~plugins/vue-instantsearch"],
-  css: ["~/css/main.css", "~/css/balloon.min.css", "~/css/toastr.min.css",
-  "~/css/bulma-checkradio.css"],
+  css: [
+    "~/css/main.css",
+    "~/css/balloon.min.css",
+    "~/css/toastr.min.css",
+    "~/css/bulma-checkradio.css"
+  ],
   /*
   ** Customize the progress bar color
   */
