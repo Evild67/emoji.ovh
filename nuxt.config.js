@@ -12,14 +12,10 @@ module.exports = {
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
   },
 
-  modules: ["@nuxtjs/bulma", "@nuxtjs/apollo"],
-  apollo: {
-    clientConfigs: {
-      default: "~/apollo/network-interfaces/default.js"
-    }
-  },
+  modules: ["@nuxtjs/bulma"],
+
   plugins: ["~plugins/vue-instantsearch"],
-  css: ["~/css/main.css"],
+  css: ["~/css/main.css", "~/css/balloon.min.css", "~/css/toastr.min.css"],
   /*
   ** Customize the progress bar color
   */

@@ -54,15 +54,6 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
-"@nuxtjs/apollo@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/apollo/-/apollo-3.0.1.tgz#0af78526a4867751e531450108933c74e2bdf1a0"
-  dependencies:
-    apollo-cache-inmemory "^1.0.0"
-    apollo-client "^2.0.1"
-    isomorphic-fetch "^2.2.1"
-    vue-apollo "^3.0.0-alpha.1"
-
 "@nuxtjs/bulma@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@nuxtjs/bulma/-/bulma-1.1.0.tgz#be307a8622705c794680946affda8898a4699e34"
@@ -76,14 +67,6 @@
     cookie "^0.3.1"
     mustache "^2.3.0"
     stack-trace "0.0.10"
-
-"@types/async@2.0.47":
-  version "2.0.47"
-  resolved "https://registry.yarnpkg.com/@types/async/-/async-2.0.47.tgz#f49ba1dd1f189486beb6e1d070a850f6ab4bd521"
-
-"@types/zen-observable@0.5.3", "@types/zen-observable@^0.5.3":
-  version "0.5.3"
-  resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.5.3.tgz#91b728599544efbb7386d8b6633693a3c2e7ade5"
 
 abbrev@1:
   version "1.1.1"
@@ -228,70 +211,6 @@ anymatch@^2.0.0:
   dependencies:
     micromatch "^3.1.4"
     normalize-path "^2.1.1"
-
-apollo-cache-inmemory@^1.0.0, apollo-cache-inmemory@^1.1.5:
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/apollo-cache-inmemory/-/apollo-cache-inmemory-1.1.5.tgz#74111367fd59caee120197ef663dcb2516971300"
-  dependencies:
-    apollo-cache "^1.1.0"
-    apollo-utilities "^1.0.4"
-    graphql-anywhere "^4.1.1"
-
-apollo-cache@^1.1.0, apollo-cache@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/apollo-cache/-/apollo-cache-1.1.1.tgz#bfe9b718ebc94774fbf1981a1ef4f1391bdfc7ae"
-  dependencies:
-    apollo-utilities "^1.0.5"
-
-apollo-client@^2.0.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-2.2.1.tgz#9402ea5aa71d49c668c5a8451025001e135b0beb"
-  dependencies:
-    "@types/zen-observable" "^0.5.3"
-    apollo-cache "^1.1.1"
-    apollo-link "^1.0.0"
-    apollo-link-dedup "^1.0.0"
-    apollo-utilities "^1.0.5"
-    symbol-observable "^1.0.2"
-    zen-observable "^0.7.0"
-  optionalDependencies:
-    "@types/async" "2.0.47"
-
-apollo-fetch@^0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/apollo-fetch/-/apollo-fetch-0.7.0.tgz#63c255a0ccb1b4c473524d8f9b536d72438bd3e7"
-  dependencies:
-    cross-fetch "^1.0.0"
-
-apollo-link-dedup@^1.0.0:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/apollo-link-dedup/-/apollo-link-dedup-1.0.5.tgz#1c213d7ebbe48e74b016fffacd7e6a53dc309e32"
-  dependencies:
-    apollo-link "^1.0.7"
-
-apollo-link-error@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/apollo-link-error/-/apollo-link-error-1.0.3.tgz#2c679d2e6a2df09a9ae3f70d23c64af922a801a2"
-  dependencies:
-    apollo-link "^1.0.6"
-
-apollo-link-http@^1.3.2:
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/apollo-link-http/-/apollo-link-http-1.3.2.tgz#63537ee5ecf9c004efb0317f1222b7dbc6f21559"
-  dependencies:
-    apollo-link "^1.0.7"
-
-apollo-link@^1.0.0, apollo-link@^1.0.6, apollo-link@^1.0.7:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/apollo-link/-/apollo-link-1.0.7.tgz#42cd38a7378332fc3e41a214ff6a6e5e703a556f"
-  dependencies:
-    "@types/zen-observable" "0.5.3"
-    apollo-utilities "^1.0.0"
-    zen-observable "^0.6.0"
-
-apollo-utilities@^1.0.0, apollo-utilities@^1.0.4, apollo-utilities@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.0.5.tgz#a5e99507d730ce21e84e07c7a9c7586b2ccdc58e"
 
 aproba@^1.0.3, aproba@^1.1.1:
   version "1.2.0"
@@ -940,8 +859,8 @@ babel-preset-vue-app@^2.0.0:
     babel-runtime "^6.20.0"
 
 babel-preset-vue@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/babel-preset-vue/-/babel-preset-vue-2.0.0.tgz#441f7cf75836a0fa908a5df62bc243f8f9109d2c"
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/babel-preset-vue/-/babel-preset-vue-2.0.1.tgz#031f845944819f64f5ac4b20467b6cbe4b97ac68"
   dependencies:
     babel-helper-vue-jsx-merge-props "^2.0.2"
     babel-plugin-jsx-event-modifiers "^2.0.2"
@@ -1295,8 +1214,8 @@ caniuse-api@^2.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-db@^1.0.30000529, caniuse-db@^1.0.30000634, caniuse-db@^1.0.30000639:
-  version "1.0.30000798"
-  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000798.tgz#92f26f77f89cc2a4d60487f41e0b3d2a6c3fe341"
+  version "1.0.30000800"
+  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000800.tgz#a86e6bc23bd9a707d5df42f33e64d0495cfda218"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000791, caniuse-lite@^1.0.30000792:
   version "1.0.30000792"
@@ -1690,13 +1609,6 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-cross-fetch@^1.0.0:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-1.1.1.tgz#dede6865ae30f37eae62ac90ebb7bdac002b05a0"
-  dependencies:
-    node-fetch "1.7.3"
-    whatwg-fetch "2.0.3"
-
 cross-spawn@^5.0.1, cross-spawn@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-5.1.0.tgz#e8bd0efee58fcff6f8f94510a0a554bbfa235449"
@@ -2071,8 +1983,8 @@ ejs@^2.5.6:
   resolved "https://registry.yarnpkg.com/ejs/-/ejs-2.5.7.tgz#cc872c168880ae3c7189762fd5ffc00896c9518a"
 
 electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.30:
-  version "1.3.31"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.31.tgz#00d832cba9fe2358652b0c48a8816c8e3a037e9f"
+  version "1.3.32"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.32.tgz#11d0684c0840e003c4be8928f8ac5f35dbc2b4e6"
 
 elliptic@^6.0.0:
   version "6.4.0"
@@ -2800,8 +2712,8 @@ global@^4.3.2:
     process "~0.5.1"
 
 globals@^11.0.1, globals@^11.1.0:
-  version "11.2.0"
-  resolved "https://registry.yarnpkg.com/globals/-/globals-11.2.0.tgz#aa2ece052a787563ba70a3dcd9dc2eb8a9a0488c"
+  version "11.3.0"
+  resolved "https://registry.yarnpkg.com/globals/-/globals-11.3.0.tgz#e04fdb7b9796d8adac9c8f64c14837b2313378b0"
 
 globals@^9.18.0:
   version "9.18.0"
@@ -2827,22 +2739,6 @@ good-listener@^1.2.2:
 graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.6:
   version "4.1.11"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
-
-graphql-anywhere@^4.1.1:
-  version "4.1.2"
-  resolved "https://registry.yarnpkg.com/graphql-anywhere/-/graphql-anywhere-4.1.2.tgz#55e58593158f3deb0814def522c55e948c57cabb"
-  dependencies:
-    apollo-utilities "^1.0.5"
-
-graphql-tag@^2.6.1:
-  version "2.6.1"
-  resolved "https://registry.yarnpkg.com/graphql-tag/-/graphql-tag-2.6.1.tgz#4788d509f6e29607d947fc47a40c4e18f736d34a"
-
-graphql@^0.12.3:
-  version "0.12.3"
-  resolved "https://registry.yarnpkg.com/graphql/-/graphql-0.12.3.tgz#11668458bbe28261c0dcb6e265f515ba79f6ce07"
-  dependencies:
-    iterall "1.1.3"
 
 gzip-size@^3.0.0:
   version "3.0.0"
@@ -3392,20 +3288,13 @@ isobject@^3.0.0, isobject@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/isobject/-/isobject-3.0.1.tgz#4e431e92b11a9731636aa1f9c8d1ccbcfdab78df"
 
-isomorphic-fetch@^2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz#611ae1acf14f5e81f729507472819fe9733558a9"
-  dependencies:
-    node-fetch "^1.0.1"
-    whatwg-fetch ">=0.10.0"
-
 isstream@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
 
-iterall@1.1.3:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/iterall/-/iterall-1.1.3.tgz#1cbbff96204056dde6656e2ed2e2226d0e6d72c9"
+jquery@>=1.12.0:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.3.1.tgz#958ce29e81c9790f31be7792df5d4d95fc57fbca"
 
 js-base64@^2.1.9:
   version "2.4.3"
@@ -3511,14 +3400,14 @@ kind-of@^6.0.0, kind-of@^6.0.2:
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.2.tgz#01146b36a6218e64e58f3a8d66de5d7fc6f6d051"
 
 launch-editor-middleware@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/launch-editor-middleware/-/launch-editor-middleware-2.2.0.tgz#a0bde4f3ea7ec8a55fcbf3ec5da5de1edc1d7824"
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/launch-editor-middleware/-/launch-editor-middleware-2.2.1.tgz#e14b07e6c7154b0a4b86a0fd345784e45804c157"
   dependencies:
-    launch-editor "^2.0.0"
+    launch-editor "^2.2.1"
 
-launch-editor@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/launch-editor/-/launch-editor-2.0.0.tgz#24a978139e0e9747fec2b4115f09a684526e2b90"
+launch-editor@^2.0.0, launch-editor@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/launch-editor/-/launch-editor-2.2.1.tgz#871b5a3ee39d6680fcc26d37930b6eeda89db0ca"
   dependencies:
     chalk "^2.3.0"
     shell-quote "^1.6.1"
@@ -3602,10 +3491,6 @@ lodash.camelcase@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/lodash.camelcase/-/lodash.camelcase-4.3.0.tgz#b28aa6288a2b9fc651035c7711f65ab6190331a6"
 
-lodash.debounce@^4.0.8:
-  version "4.0.8"
-  resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
-
 lodash.endswith@^4.2.1:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/lodash.endswith/-/lodash.endswith-4.2.1.tgz#fed59ac1738ed3e236edd7064ec456448b37bc09"
@@ -3626,10 +3511,6 @@ lodash.memoize@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
 
-lodash.omit@^4.5.0:
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/lodash.omit/-/lodash.omit-4.5.0.tgz#6eb19ae5a1ee1dd9df0b969e66ce0b7fa30b5e60"
-
 lodash.startswith@^4.2.1:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/lodash.startswith/-/lodash.startswith-4.2.1.tgz#c598c4adce188a27e53145731cdc6c0e7177600c"
@@ -3646,10 +3527,6 @@ lodash.templatesettings@^4.0.0:
   resolved "https://registry.yarnpkg.com/lodash.templatesettings/-/lodash.templatesettings-4.1.0.tgz#2b4d4e95ba440d915ff08bc899e4553666713316"
   dependencies:
     lodash._reinterpolate "~3.0.0"
-
-lodash.throttle@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
 
 lodash.uniq@^4.5.0:
   version "4.5.0"
@@ -3948,13 +3825,6 @@ no-case@^2.2.0:
 node-fetch@1.6.3:
   version "1.6.3"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-1.6.3.tgz#dc234edd6489982d58e8f0db4f695029abcd8c04"
-  dependencies:
-    encoding "^0.1.11"
-    is-stream "^1.0.1"
-
-node-fetch@1.7.3, node-fetch@^1.0.1:
-  version "1.7.3"
-  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-1.7.3.tgz#980f6f72d85211a5347c6b2bc18c5b84c3eb47ef"
   dependencies:
     encoding "^0.1.11"
     is-stream "^1.0.1"
@@ -5152,8 +5022,8 @@ raw-body@2.3.2:
     unpipe "1.0.0"
 
 rc@^1.1.7:
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/rc/-/rc-1.2.4.tgz#a0f606caae2a3b862bbd0ef85482c0125b315fa3"
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/rc/-/rc-1.2.5.tgz#275cd687f6e3b36cc756baa26dfee80a790301fd"
   dependencies:
     deep-extend "~0.4.0"
     ini "~1.3.0"
@@ -5884,10 +5754,6 @@ svgo@^0.7.0:
     sax "~1.2.1"
     whet.extend "~0.9.9"
 
-symbol-observable@^1.0.2:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804"
-
 table@^4.0.1:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/table/-/table-4.0.2.tgz#a33447375391e766ad34d3486e6e2aedc84d2e36"
@@ -5987,6 +5853,12 @@ to-regex@^3.0.1:
     define-property "^0.2.5"
     extend-shallow "^2.0.1"
     regex-not "^1.0.0"
+
+toastr@^2.1.4:
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/toastr/-/toastr-2.1.4.tgz#8b43be64fb9d0c414871446f2db8e8ca4e95f181"
+  dependencies:
+    jquery ">=1.12.0"
 
 toposort@^1.0.0:
   version "1.0.6"
@@ -6249,14 +6121,6 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
-vue-apollo@^3.0.0-alpha.1:
-  version "3.0.0-alpha.2"
-  resolved "https://registry.yarnpkg.com/vue-apollo/-/vue-apollo-3.0.0-alpha.2.tgz#7456ac833a9c0e8fde8c7b76fcc1da20b09e7192"
-  dependencies:
-    lodash.debounce "^4.0.8"
-    lodash.omit "^4.5.0"
-    lodash.throttle "^4.1.1"
-
 vue-eslint-parser@^2.0.1:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/vue-eslint-parser/-/vue-eslint-parser-2.0.2.tgz#8d603545e9d7c134699075bd1772af1ffd86b744"
@@ -6324,8 +6188,8 @@ vue-server-renderer@^2.5.13:
     source-map "0.5.6"
 
 vue-style-loader@^3.0.0:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/vue-style-loader/-/vue-style-loader-3.1.1.tgz#74fdef91a81d38bc0125746a1b5505e62d69e32c"
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/vue-style-loader/-/vue-style-loader-3.1.2.tgz#6b66ad34998fc9520c2f1e4d5fa4091641c1597a"
   dependencies:
     hash-sum "^1.0.2"
     loader-utils "^1.0.2"
@@ -6440,10 +6304,6 @@ webpack@^3.10.0:
     watchpack "^1.4.0"
     webpack-sources "^1.0.1"
     yargs "^8.0.2"
-
-whatwg-fetch@2.0.3, whatwg-fetch@>=0.10.0:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-2.0.3.tgz#9c84ec2dcf68187ff00bc64e1274b442176e1c84"
 
 whet.extend@~0.9.9:
   version "0.9.9"
@@ -6563,11 +6423,3 @@ yargs@~3.10.0:
     cliui "^2.1.0"
     decamelize "^1.0.0"
     window-size "0.1.0"
-
-zen-observable@^0.6.0:
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/zen-observable/-/zen-observable-0.6.1.tgz#01dbed3bc8d02cbe9ee1112c83e04c807f647244"
-
-zen-observable@^0.7.0:
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/zen-observable/-/zen-observable-0.7.1.tgz#f84075c0ee085594d3566e1d6454207f126411b3"

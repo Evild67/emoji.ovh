@@ -1,57 +1,81 @@
 <template>
   <div class="container">
+    <div class="columns">
+      <div class="column is-3">
+        <div class="emoji--group-list">
+          <div class="control">
+            <div v-for="(name, index) in group" :key="index">
+              <label class="radio">
+                <input type="radio" name="group" @click="selectedGroup = name"> {{name}}
+              </label>
+            </div>
 
-    <ais-index :search-store="searchStore" :query="query" :query-parameters="{
-            hitsPerPage:9999
+          </div>
+        </div>
+      </div>
+      <div class="column">
+
+        <ais-index :search-store="searchStore" :query="query" :query-parameters="{
+            hitsPerPage:1000,
+            facetFilters:['group:' + selectedGroup ]
            }">
 
-      <ais-search-box>
+          <ais-search-box>
 
-        <ais-input placeholder="Search for emoji..." :class-names="{
-                'ais-input': 'input'
+            <ais-input placeholder="Search for emoji..." :class-names="{
+                'ais-input': 'input is-large'
                 }" autofocus></ais-input>
 
-      </ais-search-box>
+          </ais-search-box>
 
-      <no-ssr>
-        <div class="is-pulled-right">
-          <ais-powered-by></ais-powered-by>
-        </div>
-
-      </no-ssr>
-
-      <section class="section">
-        <ais-results class="columns is-multiline is-centered" :results-per-page="9999">
-
-          <template slot-scope="{ result }">
-            <div class="column">
-              <div class="emoji--container">
-                <span class="emoji" :title="result.name" :data-clipboard-text="result.emoji">
-                  {{ result.emoji }}
-                </span>
-              </div>
-
-            </div>
-          </template>
-
-        </ais-results>
-
-        <ais-no-results class="emojis has-text-centered">
-          <template slot-scope="props">
-            <div v-show="props.query != ''">
-              No products found for
-              <i>{{ props.query }}</i>.
+          <no-ssr>
+            <div class="is-pulled-right">
+              <ais-powered-by></ais-powered-by>
             </div>
 
-          </template>
-        </ais-no-results>
-      </section>
-    </ais-index>
+          </no-ssr>
+
+          <section class="section">
+            <ais-results class="columns is-multiline is-centered is-mobile" :results-per-page="9999">
+
+              <template slot-scope="{ result }">
+                <div class="column is-narrowed">
+                  <div class="emoji--container">
+                    <span class="emoji" :data-clipboard-text="result.emoji" :data-balloon="firstLetterUpperCase(result.name)" data-balloon-pos="down">
+                      {{ result.emoji }}
+                    </span>
+                  </div>
+
+                </div>
+              </template>
+
+            </ais-results>
+
+            <ais-no-results class="emojis has-text-centered">
+              <template slot-scope="props">
+                <div v-if="props.query != '' ">
+                  No products found for
+                  <i>{{ props.query }}</i>.
+                </div>
+                <div v-else class="has-text-centered">
+
+                  <img src="~assets/pacman.svg" alt="Pacman" height="200px" width="200px">
+
+                </div>
+              </template>
+            </ais-no-results>
+          </section>
+        </ais-index>
+
+      </div>
+    </div>
+
   </div>
 </template>
 
 <script>
 import Clipboard from "clipboard"
+import toastr from "toastr"
 import {
   createFromAlgoliaCredentials,
   createFromSerialized,
@@ -66,7 +90,6 @@ export default {
   async asyncData({ context, route }) {
     searchStore.indexName = "emoji";
     searchStore.query = route.params.query ? route.params.query : '';
-    searchStore.addFacet('group', FACET_OR);
     searchStore.start();
     await searchStore.waitUntilInSync();
 
@@ -76,11 +99,26 @@ export default {
   data() {
     return {
       searchStore: null,
-      query: ""
+      query: "",
+      selectedGroup: null,
+      group: ["smileys-people",
+        "animals-nature",
+        "food-drink",
+        "travel-places",
+        "activities",
+        "objects",
+        "symbols",
+        "flags"]
     };
+  },
+  methods: {
+    firstLetterUpperCase(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+    }
   },
   watch: {
     "searchStore.query"(value) {
+
       if (value != "") {
         this.$router.push({
           query: { q: value }
@@ -96,7 +134,19 @@ export default {
   },
 
   mounted() {
-    new Clipboard('.emoji');
+    const clipboard = new Clipboard('.emoji');
+    clipboard.on('success', function (e) {
+      toastr.options = {
+        timeOut: 1000,
+        positionClass: "toast-bottom-right"
+      }
+      toastr.success('Copied')
+
+      e.clearSelection();
+    });
+
+
+
   }
 };
 </script>
