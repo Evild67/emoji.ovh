@@ -4,9 +4,9 @@
       <div class="column is-3">
         <div class="emoji--group-list">
           <div class="control">
-            <div v-for="(name, index) in group" :key="index">
+            <div v-for="(group, index) in groups" :key="index">
               <label class="radio">
-                <input type="radio" name="group" @click="selectedGroup = name"> {{name}}
+                <input type="checkbox" v-model="selectedGroups" :value="group.value"> {{group.name}}
               </label>
             </div>
 
@@ -17,7 +17,7 @@
 
         <ais-index :search-store="searchStore" :query="query" :query-parameters="{
             hitsPerPage:1000,
-            facetFilters:['group:' + selectedGroup ]
+            facetFilters:getfacetFilters()
            }">
 
           <ais-search-box>
@@ -100,20 +100,29 @@ export default {
     return {
       searchStore: null,
       query: "",
-      selectedGroup: null,
-      group: ["smileys-people",
-        "animals-nature",
-        "food-drink",
-        "travel-places",
-        "activities",
-        "objects",
-        "symbols",
-        "flags"]
+      selectedGroups: [],
+      groups: [{ name: "Smiley & People", value: "smileys-people" },
+        { name: "Animals & Nature", value:"animals-nature"},
+        { name: "Food & Drink", value:"food-drink"},
+        { name: "Travel Places", value:"travel-places"},
+        { name: "Activities", value:"activities"},
+        { name: "Objects", value:"objects"},
+        { name: "Symbols", value:"symbols"},
+        { name: "Flags", value:"flags"}]
     };
   },
   methods: {
     firstLetterUpperCase(string) {
       return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+    },
+    getfacetFilters() {
+      const facetFilter = []
+      let facetFilterGroup = []
+      this.selectedGroups.forEach((group) => {
+        facetFilterGroup.push('group:' + group)
+      })
+      facetFilter.push(facetFilterGroup)
+      return facetFilter
     }
   },
   watch: {
@@ -156,7 +165,7 @@ export default {
   font-size: 3.5em;
   cursor: pointer;
   text-align: center;
-  border-radius: 5%;
+  border-radius: 5px;
 }
 
 .emoji--container:hover {
