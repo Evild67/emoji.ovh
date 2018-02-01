@@ -7,7 +7,11 @@ module.exports = {
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { hid: "description", name: "description", content: "Copy & Past your Emojis !" 😀😁😂🤣😃😄😅😆😉}
+      {
+        hid: "description",
+        name: "description",
+        content: "Copy & Past your Emojis ! 😀😁😂🤣😃😄😅😆😉"
+      }
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
   },
