@@ -18,7 +18,7 @@ module.exports = {
 
   modules: ["@nuxtjs/bulma"],
 
-  plugins: ["~plugins/vue-instantsearch"],
+  plugins: ["~plugins/vue-instantsearch", "~plugins/vue-observe-visibility"],
   css: [
     "~/css/main.css",
     "~/css/balloon.min.css",

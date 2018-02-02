@@ -21,9 +21,9 @@
       <div class="column">
 
         <ais-index :search-store="searchStore" :query="query" :query-parameters="{
-          hitsPerPage:300,
             page:page,
-            facetFilters:getfacetFilters()
+            facetFilters:getfacetFilters(),
+
            }">
 
           <ais-search-box>
@@ -42,7 +42,7 @@
           </no-ssr>
 
           <section class="section">
-            <ais-results class="columns is-multiline is-centered is-mobile" :stack="true">
+            <ais-results class="columns is-multiline is-centered is-mobile" :stack="true" :results-per-page="500">
 
               <template slot-scope="{ result }">
                 <div class="column is-narrowed">
@@ -63,13 +63,13 @@
                   No products found for
                   <i>{{ props.query }}</i>.
                 </div>
-                <div v-else class="has-text-centered">
 
-                  <img src="~assets/pacman.svg" alt="Pacman" height="200px" width="200px">
-
-                </div>
               </template>
             </ais-no-results>
+            <div v-if="page < 4" class="has-text-centered"  v-observe-visibility="loadMore">
+              <img src="~assets/pacman.svg" alt="Pacman" height="200px" width="200px">
+            </div>
+
           </section>
         </ais-index>
 
@@ -86,8 +86,7 @@ import Clipboard from "clipboard";
 import toastr from "toastr";
 import {
   createFromAlgoliaCredentials,
-  createFromSerialized,
-  FACET_OR
+  createFromSerialized
 } from "vue-instantsearch";
 const searchStore = createFromAlgoliaCredentials(
   "MHSLRVK5SX",
@@ -136,9 +135,24 @@ export default {
       });
       facetFilter.push(facetFilterGroup);
       return facetFilter;
+    },
+    loadMore: function(isVisible) {
+      console.log(searchStore);
+      console.log(searchStore.totalPages);
+      if (isVisible && this.page < 4) {
+        this.page++;
+      }
     }
   },
   watch: {
+    selectedGroups(value) {
+      searchStore.stop();
+      this.page = 1;
+
+      searchStore.start();
+      searchStore.refresh();
+      console.log(searchStore);
+    },
     "searchStore.query"(value) {
       if (value != "") {
         this.$router.push({
