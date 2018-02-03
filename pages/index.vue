@@ -45,12 +45,12 @@
             <ais-results class="columns is-multiline is-centered is-mobile" :stack="true" :results-per-page="500">
 
               <template slot-scope="{ result }">
-                <div class="column is-narrowed">
-                  <div class="emoji--container">
+                <div class="column emoji--container">
+
                     <span class="emoji" :data-clipboard-text="result.emoji" :data-balloon="firstLetterUpperCase(result.name)" data-balloon-pos="down">
                       {{ result.emoji }}
                     </span>
-                  </div>
+
 
                 </div>
               </template>
@@ -66,7 +66,7 @@
 
               </template>
             </ais-no-results>
-            <div v-if="page < 4" class="has-text-centered"  v-observe-visibility="loadMore">
+            <div v-if="page < totalPages" class="has-text-centered"  v-observe-visibility="loadMore">
               <img src="~assets/pacman.svg" alt="Pacman" height="200px" width="200px">
             </div>
 
@@ -107,6 +107,7 @@ export default {
 
   data() {
     return {
+      totalPages: 0,
       page: 1,
       searchStore: null,
       query: "",
@@ -137,9 +138,7 @@ export default {
       return facetFilter;
     },
     loadMore: function(isVisible) {
-      console.log(searchStore);
-      console.log(searchStore.totalPages);
-      if (isVisible && this.page < 4) {
+      if (isVisible && this.page < this.totalPages) {
         this.page++;
       }
     }
@@ -151,7 +150,9 @@ export default {
 
       searchStore.start();
       searchStore.refresh();
-      console.log(searchStore);
+    },
+    "searchStore.totalPages"(value) {
+      this.totalPages = value;
     },
     "searchStore.query"(value) {
       if (value != "") {
