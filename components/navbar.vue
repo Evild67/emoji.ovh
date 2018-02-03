@@ -3,8 +3,7 @@
     <div class="navbar-brand">
 
       <router-link class="navbar-item" to="/" rel="home">
-        <img src="https://res.cloudinary.com/dhaas/image/upload/q_auto,f_auto,w_50,h_28/v1516273578/logo" alt="Logo Dominique HAAS" width="50" height="28
-        ">
+      {{randomEmoji}}
       </router-link>
 
       <div id="navbarBurger" class="navbar-burger burger is-unselectable" data-target="navMenuDocumentation">
@@ -27,38 +26,43 @@
   </nav>
 </template>
 <script>
-
 export default {
+  computed: {
+    randomEmoji() {
+      const emojis = ["😀", "😁", "😂", "🤣", "😃", "😄", "😅", "😆", "😉"];
 
+      return emojis[Math.floor(Math.random() * emojis.length)];
+    }
+  },
   mounted() {
     const $navbarBurgers = Array.prototype.slice.call(
-      document.querySelectorAll('.navbar-burger'),
+      document.querySelectorAll(".navbar-burger"),
       0
-    )
+    );
 
     // Check if there are any navbar burgers
     if ($navbarBurgers.length > 0) {
       // Add a click event on each of them
       $navbarBurgers.forEach($el => {
-        $el.addEventListener('click', () => {
+        $el.addEventListener("click", () => {
           // Get the target from the "data-target" attribute
-          const target = $el.dataset.target
-          const $target = document.getElementById(target)
+          const target = $el.dataset.target;
+          const $target = document.getElementById(target);
 
           // Toggle the class on both the "navbar-burger" and the "navbar-menu"
-          $el.classList.toggle('is-active')
-          $target.classList.toggle('is-active')
-          $el.textContent = ($el.classList.contains('is-active') ? "🥪" : "🍔")
-        })
-      })
+          $el.classList.toggle("is-active");
+          $target.classList.toggle("is-active");
+          $el.textContent = $el.classList.contains("is-active") ? "🥪" : "🍔";
+        });
+      });
     }
   }
-}
+};
 </script>
 <style>
 @media screen and (min-width: 1024px) {
   nav .navbar-burger {
-    display: none
+    display: none;
   }
 }
 .navbar-burger {
