@@ -226,7 +226,7 @@ export default {
 
   mounted () {
 
-    this.mostRecentlyCopiedEmojis = JSON.parse(localStorage.getItem('mostRecentlyCopiedEmojis'))
+    this.mostRecentlyCopiedEmojis = JSON.parse(localStorage.getItem('mostRecentlyCopiedEmojis')) || []
 
 
 
