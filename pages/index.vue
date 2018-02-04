@@ -60,9 +60,9 @@
 
                   <div class="columns is-multiline is-centered is-mobile">
 
-                    <div v-for="(emoji, index) in mostRecentlyCopiedEmojis" :key="index" class="column emoji--container">
+                    <div v-for="(emoji, index) in mostRecentlyCopiedEmojis" :key="index" class="column emoji--container" v-clipboard:copy="emoji" v-clipboard:success="onCopy" data-balloon-pos="down">
 
-                      <span class="emoji" v-clipboard:copy="emoji" v-clipboard:success="onCopy" data-balloon-pos="down">
+                      <span class="emoji">
                         {{ emoji }}
                       </span>
 
@@ -77,9 +77,9 @@
                   <ais-results class="columns is-multiline is-centered is-mobile" :stack="true" :results-per-page="500">
 
                     <template slot-scope="{ result }">
-                      <div class="column emoji--container">
+                      <div class="column emoji--container" v-clipboard:copy="result.emoji" v-clipboard:success="onCopy" :data-balloon="firstLetterUpperCase(result.name)" data-balloon-pos="down">
 
-                        <span class="emoji" v-clipboard:copy="result.emoji" v-clipboard:success="onCopy" :data-balloon="firstLetterUpperCase(result.name)" data-balloon-pos="down">
+                        <span class="emoji">
                           {{ result.emoji }}
                         </span>
 
