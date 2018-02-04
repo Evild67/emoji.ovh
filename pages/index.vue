@@ -4,7 +4,7 @@
       <div class="hero-body">
         <div class="container">
           <h1 class="title">
-            👆️ Click to Copy and Past Emojis !
+            👆️ Click to Copy and Paste Emojis !
           </h1>
           <h2 class="subtitle">
             Quick & Easy ! No apps needed.
