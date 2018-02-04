@@ -3,12 +3,12 @@
     <section class="hero">
       <div class="hero-body">
         <div class="container">
-          <h1 class="title">
+          <h2 class="title is-2">
             👆️ Click to Copy and Paste Emojis !
-          </h1>
-          <h2 class="subtitle">
-            Quick & Easy ! No apps needed.
           </h2>
+          <h3 class="subtitle">
+            Quick & Easy ! No apps needed.
+          </h3>
         </div>
       </div>
     </section>
@@ -174,6 +174,7 @@ export default {
 
       }
       this.mostRecentlyCopiedEmojis.unshift(e.text);
+      localStorage.setItem('mostRecentlyCopiedEmojis', JSON.stringify(this.mostRecentlyCopiedEmojis))
       toastr.options = {
         timeOut: 1000,
         positionClass: "toast-bottom-right"
@@ -223,7 +224,13 @@ export default {
     this.searchStore = createFromSerialized(this.serializedSearchStore);
   },
 
-  mounted () { }
+  mounted () {
+
+    this.mostRecentlyCopiedEmojis = JSON.parse(localStorage.getItem('mostRecentlyCopiedEmojis'))
+
+
+
+  }
 };
 </script>
 <style>
