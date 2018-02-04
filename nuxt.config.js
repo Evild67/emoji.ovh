@@ -6,7 +6,11 @@ module.exports = {
     title: "😎 Emoji.ovh - Copy & Past your Emojis",
     meta: [
       { charset: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" },
+      {
+        name: "viewport",
+        content:
+          "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+      },
       {
         hid: "description",
         name: "description",
@@ -18,7 +22,11 @@ module.exports = {
 
   modules: ["@nuxtjs/bulma"],
 
-  plugins: ["~plugins/vue-instantsearch", "~plugins/vue-observe-visibility"],
+  plugins: [
+    "~plugins/vue-instantsearch",
+    "~plugins/vue-observe-visibility",
+    "~plugins/vue-clipboard2"
+  ],
   css: [
     "~/css/main.css",
     "~/css/balloon.min.css",

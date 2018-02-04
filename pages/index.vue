@@ -1,88 +1,125 @@
 <template>
-<section class="section">
- <div class="container">
-    <div class="columns">
-      <div class="column is-3 is-hidden-touch">
-        <div class="emoji--group-list">
-
-          <div class="field">
-<div v-for="(group, index) in groups" :key="index" >
-
- <input class="is-checkradio" type="checkbox" :value="group.value"  v-model="selectedGroups"  name="group" :id="'group_'+index">
-  <label  :for="'group_'+index">{{group.name}}</label>
-
-
-</div>
-
-
-          </div>
+  <div>
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            👆️ Click to Copy and Past Emojis !
+          </h1>
+          <h2 class="subtitle">
+            Quick & Easy ! No apps needed.
+          </h2>
         </div>
       </div>
-      <div class="column">
+    </section>
+    <section class="section">
+      <div class="container">
 
-        <ais-index :search-store="searchStore" :query="query" :query-parameters="{
+        <div class="columns">
+          <div class="column is-3 is-hidden-touch">
+            <div class="emoji--group-list">
+
+              <div class="field">
+                <div v-for="(group, index) in groups" :key="index">
+
+                  <input class="is-checkradio" type="checkbox" :value="group.value" v-model="selectedGroups" name="group" :id="'group_'+index">
+                  <label :for="'group_'+index">{{group.name}}</label>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="column">
+
+            <ais-index :search-store="searchStore" :query="query" :query-parameters="{
             page:page,
             facetFilters:getfacetFilters(),
 
            }">
 
-          <ais-search-box>
+              <ais-search-box>
 
-            <ais-input placeholder="Search for emoji..." :class-names="{
+                <ais-input placeholder="Search for emoji..." :class-names="{
                 'ais-input': 'input is-large'
                 }" autofocus></ais-input>
 
-          </ais-search-box>
+              </ais-search-box>
 
-          <no-ssr>
-            <div class="is-pulled-right">
-              <ais-powered-by></ais-powered-by>
-            </div>
-
-          </no-ssr>
-
-          <section class="section">
-            <ais-results class="columns is-multiline is-centered is-mobile" :stack="true" :results-per-page="500">
-
-              <template slot-scope="{ result }">
-                <div class="column emoji--container">
-
-                    <span class="emoji" :data-clipboard-text="result.emoji" :data-balloon="firstLetterUpperCase(result.name)" data-balloon-pos="down">
-                      {{ result.emoji }}
-                    </span>
-
-
-                </div>
-              </template>
-
-            </ais-results>
-
-            <ais-no-results class="emojis has-text-centered">
-              <template slot-scope="props">
-                <div v-if="props.query != '' ">
-                  No products found for
-                  <i>{{ props.query }}</i>.
+              <no-ssr>
+                <div class="is-pulled-right">
+                  <ais-powered-by></ais-powered-by>
                 </div>
 
-              </template>
-            </ais-no-results>
-            <div v-if="page < totalPages" class="has-text-centered"  v-observe-visibility="loadMore">
-              <img src="~assets/pacman.svg" alt="Pacman" height="200px" width="200px">
-            </div>
+              </no-ssr>
 
-          </section>
-        </ais-index>
+              <section class="section">
+
+                <section class="section">
+                  <h3 class="title is-3"> Your Most Recently Copied Emojis</h3>
+
+                  <div class="columns is-multiline is-centered is-mobile">
+
+                    <div v-for="(emoji, index) in mostRecentlyCopiedEmojis" :key="index" class="column emoji--container">
+
+                      <span class="emoji" v-clipboard:copy="emoji" v-clipboard:success="onCopy" data-balloon-pos="down">
+                        {{ emoji }}
+                      </span>
+
+                    </div>
+
+                  </div>
+
+                </section>
+
+                <section class="section">
+                  <h3 class="title is-3">Emojis</h3>
+                  <ais-results class="columns is-multiline is-centered is-mobile" :stack="true" :results-per-page="500">
+
+                    <template slot-scope="{ result }">
+                      <div class="column emoji--container">
+
+                        <span class="emoji" v-clipboard:copy="result.emoji" v-clipboard:success="onCopy" :data-balloon="firstLetterUpperCase(result.name)" data-balloon-pos="down">
+                          {{ result.emoji }}
+                        </span>
+
+                      </div>
+                    </template>
+
+                  </ais-results>
+
+                  <ais-no-results class="emojis has-text-centered">
+                    <template slot-scope="props">
+                      <div v-if="props.query != '' ">
+                        No products found for
+                        <i>{{ props.query }}</i>.
+                      </div>
+                      <div v-else-if="totalPages === 0" class="has-text-centered ">
+
+                        <img src="/pacman.svg " alt="Pacman " height="200px " width="200px ">
+
+                      </div>
+
+                    </template>
+                  </ais-no-results>
+                </section>
+                <div v-if="page < totalPages " class="has-text-centered " v-observe-visibility="loadMore ">
+                  <img src="/pacman.svg " alt="Pacman " height="200px " width="200px ">
+                </div>
+
+              </section>
+            </ais-index>
+
+          </div>
+        </div>
 
       </div>
-    </div>
-
+    </section>
   </div>
-</section>
 
 </template>
 
 <script>
-import Clipboard from "clipboard";
 import toastr from "toastr";
 import {
   createFromAlgoliaCredentials,
@@ -94,7 +131,7 @@ const searchStore = createFromAlgoliaCredentials(
 );
 
 export default {
-  async asyncData({ context, route }) {
+  async asyncData ({ context, route }) {
     searchStore.indexName = "emoji";
     searchStore.query = route.params.query ? route.params.query : "";
 
@@ -105,8 +142,9 @@ export default {
     return { serializedSearchStore: searchStore.serialize() };
   },
 
-  data() {
+  data () {
     return {
+      mostRecentlyCopiedEmojis: [],
       totalPages: 0,
       page: 1,
       searchStore: null,
@@ -125,10 +163,27 @@ export default {
     };
   },
   methods: {
-    firstLetterUpperCase(string) {
+    onCopy (e) {
+      const foundEmoji = this.mostRecentlyCopiedEmojis.indexOf(e.text);
+
+      if (foundEmoji !== -1) {
+        this.mostRecentlyCopiedEmojis.splice(foundEmoji, 1);
+      }
+      if (this.mostRecentlyCopiedEmojis.length === 8) {
+        this.mostRecentlyCopiedEmojis.splice(7, 1);
+
+      }
+      this.mostRecentlyCopiedEmojis.unshift(e.text);
+      toastr.options = {
+        timeOut: 1000,
+        positionClass: "toast-bottom-right"
+      };
+      toastr.success("Copied");
+    },
+    firstLetterUpperCase (string) {
       return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
     },
-    getfacetFilters() {
+    getfacetFilters () {
       const facetFilter = [];
       let facetFilterGroup = [];
       this.selectedGroups.forEach(group => {
@@ -137,24 +192,24 @@ export default {
       facetFilter.push(facetFilterGroup);
       return facetFilter;
     },
-    loadMore: function(isVisible) {
+    loadMore: function (isVisible) {
       if (isVisible && this.page < this.totalPages) {
         this.page++;
       }
     }
   },
   watch: {
-    selectedGroups(value) {
+    selectedGroups (value) {
       searchStore.stop();
       this.page = 1;
 
       searchStore.start();
       searchStore.refresh();
     },
-    "searchStore.totalPages"(value) {
+    "searchStore.totalPages" (value) {
       this.totalPages = value;
     },
-    "searchStore.query"(value) {
+    "searchStore.query" (value) {
       if (value != "") {
         this.$router.push({
           query: { q: value }
@@ -164,22 +219,11 @@ export default {
       }
     }
   },
-  created() {
+  created () {
     this.searchStore = createFromSerialized(this.serializedSearchStore);
   },
 
-  mounted() {
-    const clipboard = new Clipboard(".emoji");
-    clipboard.on("success", function(e) {
-      toastr.options = {
-        timeOut: 1000,
-        positionClass: "toast-bottom-right"
-      };
-      toastr.success("Copied");
-
-      e.clearSelection();
-    });
-  }
+  mounted () { }
 };
 </script>
 <style>
