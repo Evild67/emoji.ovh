@@ -10,7 +10,18 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "precommit": "npm run lint"
+    "precommit": "npm run lint",
+    "test": "ava --serial --verbose"
+  },
+  "ava": {
+    "require": [
+      "babel-register"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
   },
   "dependencies": {
     "@nuxtjs/bulma": "^1.1.0",
@@ -22,6 +33,8 @@
     "vue-observe-visibility": "^0.3.1"
   },
   "devDependencies": {
+    "ava": "^0.25.0",
+    "jsdom": "^11.6.2",
     "babel-eslint": "^8.2.1",
     "eslint": "^4.15.0",
     "eslint-friendly-formatter": "^3.0.0",

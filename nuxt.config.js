@@ -3,7 +3,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: "😎 Emoji.ovh - Copy & Paste your Emojis",
+    title: "😎 Emoji.ovh - 🔎 Search, Click & Paste your Emojis",
     meta: [
       { charset: "utf-8" },
       {
@@ -14,7 +14,7 @@ module.exports = {
       {
         hid: "description",
         name: "description",
-        content: "Copy & Paste your Emojis ! 😀😁😂🤣😃😄😅😆😉"
+        content: "Click to Copy and Paste Emojis ! Quick & Easy ! No apps needed. 😀😁😂🤣😃😄😅😆😉"
       }
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
