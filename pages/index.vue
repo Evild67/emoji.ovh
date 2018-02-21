@@ -1,32 +1,12 @@
 <template>
   <div>
-    <section class="hero">
-      <div class="hero-body">
-        <div class="container">
-          <h2 class="title is-2">👆️ Click to Copy and Paste Emojis !</h2>
-          <h3 class="subtitle">
-            Quick & Easy ! No apps needed.
-          </h3>
-        </div>
-      </div>
-    </section>
+    <hero-index></hero-index>
     <section class="section">
       <div class="container">
 
         <div class="columns">
           <div class="column is-3 is-hidden-touch">
-            <div class="emoji--group-list">
-
-              <div class="field">
-                <div v-for="(group, index) in groups" :key="index">
-
-                  <input class="is-checkradio" type="checkbox" :value="group.value" v-model="selectedGroups" name="group" :id="'group_'+index">
-                  <label :for="'group_'+index">{{group.name}}</label>
-
-                </div>
-
-              </div>
-            </div>
+            <emoji-groups :groups="groups" :selectedGroups.sync="selectedGroups"></emoji-groups>
           </div>
           <div class="column">
 
@@ -127,8 +107,13 @@ const searchStore = createFromAlgoliaCredentials(
   "MHSLRVK5SX",
   "e09e72a63fcc5a9b1a0b9e26b33041ca"
 );
-
+import heroIndex from '~/components/hero_index'
+import emojiGroups from '~/components/emoji/groups'
 export default {
+  components: {
+    heroIndex,
+    emojiGroups
+  },
   async asyncData ({ context, route }) {
     searchStore.indexName = "emoji";
     searchStore.query = route.params.query ? route.params.query : "";
@@ -178,6 +163,7 @@ export default {
         positionClass: "toast-bottom-right"
       };
       toastr.success("Copied");
+
     },
     firstLetterUpperCase (string) {
       return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
@@ -226,6 +212,7 @@ export default {
 
 
     this.mostRecentlyCopiedEmojis = JSON.parse(localStorage.getItem('mostRecentlyCopiedEmojis')) || []
+
 
 
 
