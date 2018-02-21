@@ -14,14 +14,16 @@
     "test": "ava --serial --verbose"
   },
   "ava": {
-    "require": [
-      "babel-register"
-    ]
+    "require": ["babel-register"]
   },
   "babel": {
-    "presets": [
-      "es2015"
-    ]
+    "presets": ["es2015"]
+  },
+  "config": {
+    "nuxt": {
+      "host": "0.0.0.0",
+      "port": "3333"
+    }
   },
   "dependencies": {
     "@nuxtjs/bulma": "^1.1.0",
@@ -35,10 +37,10 @@
   "devDependencies": {
     "ava": "^0.25.0",
     "jsdom": "^11.6.2",
-    "babel-eslint": "^8.2.1",
-    "eslint": "^4.15.0",
+    "babel-eslint": "^8.2.2",
+    "eslint": "^4.18.1",
     "eslint-friendly-formatter": "^3.0.0",
-    "eslint-loader": "^1.7.1",
-    "eslint-plugin-vue": "^4.0.0"
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-vue": "^4.2.2"
   }
 }
