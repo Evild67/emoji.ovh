@@ -1,4 +1,4 @@
-# emoji.ovh
+# 😎 Emoji.ovh - 🔎 Search, Click & Paste your Emojis
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/Evild67/emoji.ovh.svg?token=e4cad768e6e6be09e6a8edfb69878651c02a488d4c34ca21ea73ab6d757df6ea&ts=1519391983329)](https://greenkeeper.io/)
 
@@ -6,7 +6,7 @@
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 $ npm install # Or yarn install
 
