@@ -1096,6 +1096,10 @@ acorn-jsx@^3.0.0:
   dependencies:
     acorn "^3.0.4"
 
+acorn-jsx@^5.0.0:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/acorn-jsx/-/acorn-jsx-5.0.1.tgz#32a064fd925429216a09b141102bfdd185fae40e"
+
 acorn-walk@^6.0.1:
   version "6.1.1"
   resolved "https://registry.yarnpkg.com/acorn-walk/-/acorn-walk-6.1.1.tgz#d363b66f5fac5f018ff9c3a1e7b6f8e310cc3913"
@@ -1108,7 +1112,7 @@ acorn@^5.0.0, acorn@^5.5.0, acorn@^5.5.3, acorn@^5.6.2, acorn@^5.7.3:
   version "5.7.3"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.7.3.tgz#67aa231bf8812974b85235a96771eb6bd07ea279"
 
-acorn@^6.0.1:
+acorn@^6.0.1, acorn@^6.0.2:
   version "6.0.5"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-6.0.5.tgz#81730c0815f3f3b34d8efa95cb7430965f4d887a"
 
@@ -2984,11 +2988,11 @@ eslint-loader@^2.0.0:
     object-hash "^1.1.4"
     rimraf "^2.6.1"
 
-eslint-plugin-vue@^4.3.0:
-  version "4.7.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-vue/-/eslint-plugin-vue-4.7.1.tgz#c829b9fc62582c1897b5a0b94afd44ecca511e63"
+eslint-plugin-vue@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-vue/-/eslint-plugin-vue-5.1.0.tgz#d0d373334be8140d698ec4e1fb83f09faa48081b"
   dependencies:
-    vue-eslint-parser "^2.0.3"
+    vue-eslint-parser "^4.0.2"
 
 eslint-scope@3.7.1:
   version "3.7.1"
@@ -3071,12 +3075,20 @@ espower-location-detector@^1.0.0:
     source-map "^0.5.0"
     xtend "^4.0.0"
 
-espree@^3.5.2, espree@^3.5.4:
+espree@^3.5.4:
   version "3.5.4"
   resolved "https://registry.yarnpkg.com/espree/-/espree-3.5.4.tgz#b0f447187c8a8bed944b815a660bddf5deb5d1a7"
   dependencies:
     acorn "^5.5.0"
     acorn-jsx "^3.0.0"
+
+espree@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/espree/-/espree-4.1.0.tgz#728d5451e0fd156c04384a7ad89ed51ff54eb25f"
+  dependencies:
+    acorn "^6.0.2"
+    acorn-jsx "^5.0.0"
+    eslint-visitor-keys "^1.0.0"
 
 esprima@^3.1.3:
   version "3.1.3"
@@ -3092,7 +3104,7 @@ espurify@^1.6.0:
   dependencies:
     core-js "^2.0.0"
 
-esquery@^1.0.0:
+esquery@^1.0.0, esquery@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/esquery/-/esquery-1.0.1.tgz#406c51658b1f5991a5f9b62b1dc25b00e3e5c708"
   dependencies:
@@ -4773,7 +4785,7 @@ mixin-deep@^1.2.0:
 
 mkdirp@0.5.1, mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0, mkdirp@~0.5.1:
   version "0.5.1"
-  resolved "http://registry.npmjs.org/mkdirp/-/mkdirp-0.5.1.tgz#30057438eac6cf7f8c4767f38648d6697d75c903"
+  resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.1.tgz#30057438eac6cf7f8c4767f38648d6697d75c903"
   dependencies:
     minimist "0.0.8"
 
@@ -7389,16 +7401,16 @@ vue-clipboard2@^0.1.0:
   dependencies:
     clipboard "^2.0.0"
 
-vue-eslint-parser@^2.0.3:
-  version "2.0.3"
-  resolved "http://registry.npmjs.org/vue-eslint-parser/-/vue-eslint-parser-2.0.3.tgz#c268c96c6d94cfe3d938a5f7593959b0ca3360d1"
+vue-eslint-parser@^4.0.2:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/vue-eslint-parser/-/vue-eslint-parser-4.0.3.tgz#80cf162e484387b2640371ad21ba1f86e0c10a61"
   dependencies:
-    debug "^3.1.0"
-    eslint-scope "^3.7.1"
+    debug "^4.1.0"
+    eslint-scope "^4.0.0"
     eslint-visitor-keys "^1.0.0"
-    espree "^3.5.2"
-    esquery "^1.0.0"
-    lodash "^4.17.4"
+    espree "^4.1.0"
+    esquery "^1.0.1"
+    lodash "^4.17.11"
 
 vue-hot-reload-api@^2.3.0:
   version "2.3.1"
