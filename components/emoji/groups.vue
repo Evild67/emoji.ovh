@@ -1,5 +1,6 @@
 <template>
-  <div class="emoji--group-list">
+  <section class="section">
+    <h4 class="title is-3">Groups</h4>
 
     <div class="field">
       <div v-for="(group, index) in groups" :key="index">
@@ -10,7 +11,8 @@
       </div>
 
     </div>
-  </div>
+
+  </section>
 </template>
 
 <script>
@@ -23,11 +25,10 @@ export default {
 
   computed: {
     initialSelectedGroups: {
-      get () {
+      get() {
         return this.selectedGroups
       },
-      set (value) {
-        console.log(value)
+      set(value) {
         this.$emit('update:selectedGroups', value)
       }
     }

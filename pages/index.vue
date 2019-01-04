@@ -6,7 +6,8 @@
 
         <div class="columns">
           <div class="column is-3 is-hidden-touch">
-            <emoji-groups :groups="groups" :selectedGroups.sync="selectedGroups"></emoji-groups>
+            <emoji-groups class="" :groups="groups" :selectedGroups.sync="selectedGroups"></emoji-groups>
+            <emoji-tones :selectedModifierIndex.sync="selectedModifierIndex"></emoji-tones>
           </div>
           <div class="column">
 
@@ -55,13 +56,21 @@
                   <ais-results class="columns is-multiline is-centered is-mobile" :stack="true" :results-per-page="500">
 
                     <template slot-scope="{ result }">
-                      <div class="column emoji--container" v-clipboard:copy="result.emoji" v-clipboard:success="onCopy" :data-balloon="firstLetterUpperCase(result.name)" data-balloon-pos="down">
+                      <div v-if="selectedModifierIndex !== 0 && result.skins && result.skins[selectedModifierIndex - 1]" class="column emoji--container" v-clipboard:copy="result.skins[selectedModifierIndex - 1].emoji" v-clipboard:success="onCopy" :data-balloon="firstLetterUpperCase(result.name)" data-balloon-pos="down">
+
+                        <span class="emoji">
+                          {{ result.skins[selectedModifierIndex - 1].emoji }}
+                        </span>
+
+                      </div>
+                      <div v-else class="column emoji--container" v-clipboard:copy="result.emoji" v-clipboard:success="onCopy" :data-balloon="firstLetterUpperCase(result.name)" data-balloon-pos="down">
 
                         <span class="emoji">
                           {{ result.emoji }}
                         </span>
 
                       </div>
+
                     </template>
 
                   </ais-results>
@@ -109,12 +118,14 @@ const searchStore = createFromAlgoliaCredentials(
 );
 import heroIndex from '~/components/hero_index'
 import emojiGroups from '~/components/emoji/groups'
+import emojiTones from '~/components/emoji/tones'
 export default {
   components: {
     heroIndex,
-    emojiGroups
+    emojiGroups,
+    emojiTones
   },
-  async asyncData ({ context, route }) {
+  async asyncData({ context, route }) {
     searchStore.indexName = "emoji";
     searchStore.query = route.params.query ? route.params.query : "";
 
@@ -125,7 +136,7 @@ export default {
     return { serializedSearchStore: searchStore.serialize() };
   },
 
-  data () {
+  data() {
     return {
       mostRecentlyCopiedEmojis: [],
       totalPages: 0,
@@ -142,11 +153,15 @@ export default {
         { name: "Objects", value: "objects" },
         { name: "Symbols", value: "symbols" },
         { name: "Flags", value: "flags" }
-      ]
+      ],
+
+      selectedModifierIndex: 0
     };
   },
   methods: {
-    onCopy (e) {
+
+
+    onCopy(e) {
       const foundEmoji = this.mostRecentlyCopiedEmojis.indexOf(e.text);
 
       if (foundEmoji !== -1) {
@@ -165,10 +180,10 @@ export default {
       toastr.success("Copied");
 
     },
-    firstLetterUpperCase (string) {
+    firstLetterUpperCase(string) {
       return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
     },
-    getfacetFilters () {
+    getfacetFilters() {
       const facetFilter = [];
       let facetFilterGroup = [];
       this.selectedGroups.forEach(group => {
@@ -184,17 +199,17 @@ export default {
     }
   },
   watch: {
-    selectedGroups (value) {
+    selectedGroups(value) {
       searchStore.stop();
       this.page = 1;
 
       searchStore.start();
       searchStore.refresh();
     },
-    "searchStore.totalPages" (value) {
+    "searchStore.totalPages"(value) {
       this.totalPages = value;
     },
-    "searchStore.query" (value) {
+    "searchStore.query"(value) {
       if (value != "") {
         this.$router.push({
           query: { q: value }
@@ -204,11 +219,11 @@ export default {
       }
     }
   },
-  created () {
+  created() {
     this.searchStore = createFromSerialized(this.serializedSearchStore);
   },
 
-  mounted () {
+  mounted() {
 
 
     this.mostRecentlyCopiedEmojis = JSON.parse(localStorage.getItem('mostRecentlyCopiedEmojis')) || []
@@ -236,6 +251,15 @@ export default {
 
 .emoji--container:active {
   background: #aeaeae;
+}
+
+.emoji--mini {
+  font-family: "Segoe UI Emoji";
+  font-size: 1.5em;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 5px;
+  padding: 0;
 }
 
 abbr.emoji {
