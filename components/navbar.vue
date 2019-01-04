@@ -22,7 +22,7 @@
 
       </div>
       <div class="navbar-end">
-        <a class="navbar-item is-hidden-desktop-only" href="https://twitter.com/emoji_ovh" target="noopenner">
+        <a class="navbar-item is-hidden-desktop-only" href="https://twitter.com/evild67" target="noopenner">
 
           <svg class="twitter-icon" viewBox="328 355 335 276" xmlns="http://www.w3.org/2000/svg">
             <path d="
