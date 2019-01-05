@@ -39,8 +39,8 @@
               </ais-search-box>
               <div class="columns is-mobile">
                 <div class="column advanced-filter" @click="displayAdvancedFilter = !displayAdvancedFilter">
-                  <span v-if="!displayAdvancedFilter">⬇️Show advanced filter</span>
-                  <span v-else>⬆️ Hide advanced filter</span>
+                  <span v-if="!displayAdvancedFilter">⬇️Show advanced filters</span>
+                  <span v-else>⬆️ Hide advanced filters</span>
                 </div>
                 <div class="column">
                   <no-ssr>
