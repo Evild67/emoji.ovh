@@ -1,21 +1,34 @@
 <template>
-  <div>
-    <hero-index></hero-index>
+  <div class="body">
+    <hero-index class="is-hidden-mobile"></hero-index>
     <section class="section">
       <div class="container">
 
-        <div class="columns">
-          <div class="column is-3 is-hidden-touch">
-            <emoji-groups class="" :groups="groups" :selectedGroups.sync="selectedGroups"></emoji-groups>
-            <emoji-tones :selectedModifierIndex.sync="selectedModifierIndex"></emoji-tones>
-          </div>
+        <div class="columns ">
+
           <div class="column">
 
-            <ais-index :search-store="searchStore" :query="query" :query-parameters="{
-            page:page,
-            facetFilters:getfacetFilters(),
+            <div class="field is-grouped is-grouped-multiline" v-if="selectedGroups && selectedGroups.length > 0">
 
-           }">
+              <div class="control" v-for="(group,index) in selectedGroups" :key="group.name">
+                <div class="tags has-addons">
+                  <span class="tag is-link">{{group.name}}</span>
+                  <a class="tag is-delete" @click="removeSelectedGroup(index)"></a>
+                </div>
+              </div>
+
+            </div>
+            <div v-else class="field is-grouped is-grouped-multiline">
+
+              <div class="control">
+                <div class="tags">
+                  <span class="tag is-link">All</span>
+                </div>
+              </div>
+
+            </div>
+
+            <ais-index :search-store="searchStore" :query="query" :query-parameters="{ page:page, facetFilters:getfacetFilters()}">
 
               <ais-search-box>
 
@@ -24,15 +37,25 @@
                 }" autofocus></ais-input>
 
               </ais-search-box>
-
-              <no-ssr>
-                <div class="is-pulled-right">
-                  <ais-powered-by></ais-powered-by>
+              <div class="columns is-mobile">
+                <div class="column advanced-filter" @click="displayAdvancedFilter = !displayAdvancedFilter">
+                  <span v-if="!displayAdvancedFilter">⬇️Show advanced filter</span>
+                  <span v-else>⬆️ Hide advanced filter</span>
                 </div>
+                <div class="column">
+                  <no-ssr>
 
-              </no-ssr>
+                    <div class="is-pulled-right">
+                      <ais-powered-by></ais-powered-by>
+                    </div>
 
-              <section class="section">
+                  </no-ssr>
+                </div>
+              </div>
+
+              <emoji-groups v-if="displayAdvancedFilter" class="" :groups="groups" :selectedGroups.sync="selectedGroups"></emoji-groups>
+
+              <div>
 
                 <section class="section">
                   <h3 class="title is-3"> Your Most Recently Copied Emojis</h3>
@@ -94,7 +117,7 @@
                   <img src="/pacman.svg " alt="Pacman " height="200px " width="200px ">
                 </div>
 
-              </section>
+              </div>
             </ais-index>
 
           </div>
@@ -102,6 +125,7 @@
 
       </div>
     </section>
+    <emoji-tones :selectedModifierIndex.sync="selectedModifierIndex"></emoji-tones>
   </div>
 
 </template>
@@ -155,12 +179,15 @@ export default {
         { name: "Flags", value: "flags" }
       ],
 
-      selectedModifierIndex: 0
+      selectedModifierIndex: 0,
+      displayAdvancedFilter: false
     };
   },
   methods: {
 
-
+    removeSelectedGroup(index) {
+      this.selectedGroups.splice(index, 1)
+    },
     onCopy(e) {
       const foundEmoji = this.mostRecentlyCopiedEmojis.indexOf(e.text);
 
@@ -187,7 +214,7 @@ export default {
       const facetFilter = [];
       let facetFilterGroup = [];
       this.selectedGroups.forEach(group => {
-        facetFilterGroup.push("group:" + group);
+        facetFilterGroup.push("group:" + group.value);
       });
       facetFilter.push(facetFilterGroup);
       return facetFilter;
@@ -225,7 +252,7 @@ export default {
 
   mounted() {
 
-
+    this.selectedModifierIndex = localStorage.getItem('selectedModifierIndex') || 0
     this.mostRecentlyCopiedEmojis = JSON.parse(localStorage.getItem('mostRecentlyCopiedEmojis')) || []
 
 
@@ -237,6 +264,9 @@ export default {
 };
 </script>
 <style>
+.body {
+  margin-top: 54px;
+}
 .emoji--container {
   font-family: "Segoe UI Emoji";
   font-size: 3.5em;
@@ -269,5 +299,8 @@ abbr.emoji {
 .is-vertical-center {
   display: flex;
   align-items: center;
+}
+.advanced-filter {
+  cursor: pointer;
 }
 </style>

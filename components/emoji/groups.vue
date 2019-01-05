@@ -1,18 +1,15 @@
 <template>
-  <section class="section">
-    <h4 class="title is-3">Groups</h4>
 
-    <div class="field">
-      <div v-for="(group, index) in groups" :key="index">
+  <div class="columns is-multiline">
+    <div class="column is-2" v-for="(group, index) in groups" :key="index">
 
-        <input class="is-checkradio" type="checkbox" :value="group.value" v-model="initialSelectedGroups" name="group" :id="'group_'+index">
-        <label :for="'group_'+index">{{group.name}}</label>
-
-      </div>
+      <input class="is-checkradio" type="checkbox" :value="group" v-model="initialSelectedGroups" name="group" :id="'group_'+index">
+      <label :for="'group_'+index">{{group.name}}</label>
 
     </div>
 
-  </section>
+  </div>
+
 </template>
 
 <script>

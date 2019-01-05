@@ -10,3 +10,11 @@
     </div>
   </section>
 </template>
+
+<style>
+.hero-body {
+  padding-bottom: 0;
+
+}
+</style>
+
