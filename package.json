@@ -34,7 +34,7 @@
     "nuxt": "^2.3.4",
     "toastr": "^2.1.4",
     "vue-clipboard2": "^0.2.1",
-    "vue-instantsearch": "^1.7.0",
+    "vue-instantsearch": "^2.2.1",
     "vue-observe-visibility": "^0.4.3"
   },
   "devDependencies": {
