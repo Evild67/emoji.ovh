@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "@nuxtjs/bulma": "^1.2.2",
-    "nuxt": "^2.3.4",
+    "nuxt": "^2.10.1",
     "toastr": "^2.1.4",
     "vue-clipboard2": "^0.2.1",
     "vue-instantsearch": "^1.7.0",
