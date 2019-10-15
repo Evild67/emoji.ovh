@@ -1,0 +1,15 @@
+name: CI
+
+on:
+  pull_request:
+    types:
+    - dependencies
+    branches:
+    - master
+
+jobs:
+  automerge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Merge pull requests
+        uses: pascalgn/automerge-action@v0.4.2
