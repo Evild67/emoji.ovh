@@ -3,7 +3,14 @@ name: automerge
 on:
   pull_request:
     types:
-    - dependencies
+      - labeled
+      - unlabeled
+      - synchronize
+      - opened
+      - edited
+      - ready_for_review
+      - reopened
+      - unlocked
     branches:
     - master
 
@@ -13,3 +20,5 @@ jobs:
     steps:
       - name: Merge pull requests
         uses: pascalgn/automerge-action@v0.4.2
+        env:
+          LABELS: "dependencies"
