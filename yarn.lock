@@ -1094,11 +1094,11 @@
     webpack-node-externals "^1.7.2"
     webpackbar "^4.0.0"
 
-"@nuxtjs/bulma@^1.2.2":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/bulma/-/bulma-1.2.2.tgz#abbd78d897d0f321e28f8731ada72a83a3a18d76"
+"@nuxtjs/bulma@^1.2.5":
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/bulma/-/bulma-1.2.5.tgz#dc8c84170a6776d3bddca62a11b6e33fbe074730"
   dependencies:
-    bulma "^0.7.2"
+    bulma "^0.7.5"
 
 "@nuxtjs/youch@^4.2.3":
   version "4.2.3"
@@ -2068,9 +2068,9 @@ builtin-status-codes@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/builtin-status-codes/-/builtin-status-codes-3.0.0.tgz#85982878e21b98e1c66425e03d0174788f569ee8"
 
-bulma@^0.7.2:
-  version "0.7.2"
-  resolved "https://registry.yarnpkg.com/bulma/-/bulma-0.7.2.tgz#8e944377b74c7926558830d38d8e19eaf49f5fb6"
+bulma@^0.7.5:
+  version "0.7.5"
+  resolved "https://registry.yarnpkg.com/bulma/-/bulma-0.7.5.tgz#35066c37f82c088b68f94450be758fc00a967208"
 
 bytes@3.0.0:
   version "3.0.0"
