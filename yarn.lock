@@ -8345,9 +8345,9 @@ vue-client-only@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/vue-client-only/-/vue-client-only-2.0.0.tgz#ddad8d675ee02c761a14229f0e440e219de1da1c"
 
-vue-clipboard2@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/vue-clipboard2/-/vue-clipboard2-0.2.1.tgz#9f06690af1c98aef344be1fc4beb00cdc5307ee1"
+vue-clipboard2@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/vue-clipboard2/-/vue-clipboard2-0.3.1.tgz#6e551fb7bd384889b28b0da3b12289ed6bca4894"
   dependencies:
     clipboard "^2.0.0"
 
