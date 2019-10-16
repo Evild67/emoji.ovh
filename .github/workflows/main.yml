@@ -22,3 +22,4 @@ jobs:
         uses: pascalgn/automerge-action@v0.4.2
         env:
           LABELS: "dependencies"
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
