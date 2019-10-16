@@ -38,7 +38,7 @@
     "vue-observe-visibility": "^0.4.4"
   },
   "devDependencies": {
-    "ava": "^1.0.1",
+    "ava": "^2.4.0",
     "babel-eslint": "^10.0.3",
     "eslint": "^5.16.0",
     "eslint-friendly-formatter": "^4.0.0",
