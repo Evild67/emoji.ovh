@@ -8361,9 +8361,9 @@ vue-no-ssr@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/vue-no-ssr/-/vue-no-ssr-1.1.1.tgz#875f3be6fb0ae41568a837f3ac1a80eaa137b998"
 
-vue-observe-visibility@^0.4.4:
-  version "0.4.4"
-  resolved "https://registry.yarnpkg.com/vue-observe-visibility/-/vue-observe-visibility-0.4.4.tgz#cf3e945bf80c1317a1c32bc516d6cfd4dda8f8fd"
+vue-observe-visibility@^0.4.5:
+  version "0.4.5"
+  resolved "https://registry.yarnpkg.com/vue-observe-visibility/-/vue-observe-visibility-0.4.5.tgz#32627299d53bb782ab0f848064cbd23ebfcf98a2"
 
 vue-router@~3.0.7:
   version "3.0.7"
