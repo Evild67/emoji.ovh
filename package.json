@@ -30,7 +30,7 @@
     }
   },
   "dependencies": {
-    "@nuxtjs/bulma": "^1.2.6",
+    "@nuxtjs/bulma": "^1.2.7",
     "nuxt": "^2.11.0",
     "toastr": "^2.1.4",
     "vue-clipboard2": "^0.3.1",
