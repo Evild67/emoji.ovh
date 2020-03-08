@@ -11,7 +11,8 @@
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint",
-    "test": "ava --serial --verbose"
+    "e2e": "cypress run",
+    "e2e:open": "cypress open"
   },
   "ava": {
     "require": [
@@ -40,6 +41,7 @@
   "devDependencies": {
     "ava": "^2.4.0",
     "babel-eslint": "^10.1.0",
+    "cypress": "^4.1.0",
     "eslint": "^6.8.0",
     "eslint-friendly-formatter": "^4.0.0",
     "eslint-loader": "^3.0.3",
