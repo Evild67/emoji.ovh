@@ -39,7 +39,7 @@
     "vue-observe-visibility": "^0.4.6"
   },
   "devDependencies": {
-    "ava": "^3.8.0",
+    "ava": "^3.8.1",
     "babel-eslint": "^10.1.0",
     "cypress": "^4.4.1",
     "eslint": "^6.8.0",
